@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fib_config>
+    <version>
+        <configrue_data_ver>0002.000.0000.000</configrue_data_ver>
+        <configrue_binary_ver>0000</configrue_binary_ver>
+    </version>
+    <configurations>
+        <!--  only for example
+        <setting name="USBMODE" id="00BB0000">
+            <type>int</type>
+            <min>20</min>
+            <max>43</max>
+            <val>36</val>
+        </setting>
+        <setting name="DHCPDNS" id="FFFFFFFF">
+            <type>string</type>
+            <val>192.168.0.1</val>
+        </setting>
+        <setting name="README_FILE" id="FFFFFFFF">
+            <type>binary</type>
+            <val>./README.md</val>
+        </setting>
+        -->
+    </configurations>
+</fib_config>

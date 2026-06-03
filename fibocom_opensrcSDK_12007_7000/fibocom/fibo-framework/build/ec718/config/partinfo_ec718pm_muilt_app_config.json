@@ -1,0 +1,49 @@
+{
+	"chiptype": "EC718PM",
+	"macros": {
+			"BOOTLOADER_FLASH_LOAD_ADDR":       "0x00803000",
+			"BOOTLOADER_FLASH_LOAD_SIZE":          "0x16000",
+			"NVRAM_FACTORY_PHYSICAL_BASE":      "0x00819000",
+			"NVRAM_FACTORY_PHYSICAL_SIZE":          "0x5000",
+			"CP_FLASH_LOAD_ADDR" :              "0x0081e000",
+			"CP_FLASH_LOAD_SIZE" :                 "0x64000",
+			"BOOTLOADEREXT_FLASH_LOAD_ADDR":    "0x00882000",
+			"BOOTLOADEREXT_FLASH_LOAD_SIZE":           "0x0",
+			"AP_FLASH_LOAD_ADDR":               "0x00882000",
+			"AP_FLASH_LOAD_SIZE":                 "0x250000",
+			"APP_IMAGE_FLASH_LOAD_ADDR":        "0x00ad2000",
+			"APP_IMAGE_FLASH_LOAD_SIZE":           "0x24000",
+			"APP_RAM_DATA_SIZE":                    "0x6000",		
+			"RES0_FILE_FLASH_LOAD_ADDR":        "0x00af6000",
+			"RES0_FILE_FLASH_LOAD_SIZE":               "0x0",
+			"RES1_FILE_FLASH_LOAD_ADDR":        "0x00af6000",
+			"RES1_FILE_FLASH_LOAD_SIZE":               "0x0",
+			"RES2_FILE_FLASH_LOAD_ADDR":        "0x00af6000",
+			"RES2_FILE_FLASH_LOAD_SIZE":               "0x0",
+			"FLASH_FS_REGION_START":            "0x00af6000",
+			"FLASH_FS_REGION_SIZE":                "0xd1000",
+			"RESERVED_FLASH_FS_REGION_ADDR":    "0x00bc7000",
+			"RESERVED_FLASH_FS_REGION_SIZE":        "0x6000",
+			"FLASH_MEM_BACKUP_NONXIP_ADDR":     "0x00bcd000",
+			"FLASH_MEM_BACKUP_SIZE":               "0x18000",
+			"FLASH_FOTA_REGION_START":          "0x00be5000",
+			"FLASH_FOTA_REGION_LEN":                "0xc000",
+			"NVRAM_PHYSICAL_BASE":              "0x00bf1000",
+			"NVRAM_PHYSICAL_SIZE":                  "0xD000",
+			"FLASH_MEM_PLAT_INFO_NONXIP_ADDR":  "0x00bfe000",
+			"FLASH_MEM_PLAT_INFO_SIZE":             "0x1000",
+			"_comment":  "APP_RAM_DATA_SIZE 表示的是APP的RAM空间大小，区别于其他的FLASH空间大小，计算RES0_FILE_FLASH_LOAD_ADDR时，不需要累加这个大小"				
+		},
+	"multiapp": {
+		"APP1_IMAGE_FLASH_LOAD_ADDR":        "0x00ad2000",
+		"APP1_IMAGE_FLASH_LOAD_SIZE":           "0x14000",
+		"APP2_IMAGE_FLASH_LOAD_ADDR":        "0x00ae6000",
+		"APP2_IMAGE_FLASH_LOAD_SIZE":           "0x10000",
+		"_comment":  "此处为多APP的FLASH配置,APP1的起始地址与macros中APP的起始地址保持一致；APP1的SIZE和APP2的SIZE相加，与macros中APP的SIZE保持一致"
+	},
+	"appram" : {
+		"APP1_RAM_DATA_SIZE":                    "0x3000",
+		"APP2_RAM_DATA_SIZE":                    "0x3000",
+		"_comment":  "此处为多APP的RAM配置,，APP1的RAM SIZE加APP2的RAM SIZE后；与macros中APP的RAM SIZE保持一致"
+	}
+}

@@ -1,0 +1,1269 @@
+{
+    "SENDTIME": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 12,
+                "def": 12,
+                "range": {
+                    "min": 1,
+                    "max": 30
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "IPRFMT": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    5
+                ],
+                "type": "INT"
+            }
+        ]
+    },
+    "SSLIGNORELTIME": {
+        "persistence": false,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "SSLIGNORECN": {
+        "persistence": false,
+        "params": [
+            {
+                "val": 1,
+                "def": 1,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "SOCKETBUF": {
+        "persistence": false,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "CCLKUTC": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 1,
+                "def": 1,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "GDB": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "LBSFMT": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "CHALLENGE": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 16,
+                "def": 16,
+                "enum": [
+                    8,
+                    16
+                ],
+                "type": "INT"
+            }
+        ]
+    },
+    "PPPECHO": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 255
+                },
+                "type": "INT"
+            },
+            {
+                "val": 3,
+                "def": 3,
+                "range": {
+                    "min": 0,
+                    "max": 255
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "MINRTO": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 6,
+                "def": 6,
+                "range": {
+                    "min": 0,
+                    "max": 20
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "WIFISCAN": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 10,
+                "def": 10,
+                "range": {
+                    "min": 1,
+                    "max": 30
+                },
+                "type": "INT"
+            },
+            {
+                "val": 5,
+                "def": 5,
+                "range": {
+                    "min": 1,
+                    "max": 30
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "T3302_CFUN": {
+        "visible": false,
+        "persistence": true,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "HB_SENDMODE": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+     "HB_CFGMODE": {
+        "persistence": false,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "PPPMODE": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 255
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "HB_CFGIPTYPE": {
+        "persistence": false,
+        "params": [
+            {
+                "val": 1,
+                "def": 1,
+                "range": {
+                    "min": 1,
+                    "max": 2
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "GPSCONF": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 2,
+                "def": 2,
+                "range": {
+                    "min": 0,
+                    "max": 2
+                },
+                "type": "INT"
+            },
+            {
+                "val": 115200,
+                "def": 115200,
+                "range": {
+                    "min": 0,
+                    "max": 2147483647
+                },
+                "type": "INT"
+            },
+            {
+                "val": 137,
+                "def": 137,
+                "range": {
+                    "min": 0,
+                    "max": 2147483647
+                },
+                "type": "INT"
+            },
+            {
+                "val": 138,
+                "def": 138,
+                "range": {
+                    "min": 0,
+                    "max": 2147483647
+                },
+                "type": "INT"
+            },
+            {
+                "val": 4,
+                "def": 4,
+                "range": {
+                    "min": 0,
+                    "max": 2147483647
+                },
+                "type": "INT"
+            },
+            {
+                "val": 4,
+                "def": 4,
+                "range": {
+                    "min": 0,
+                    "max": 2147483647
+                },
+                "type": "INT"
+            },
+            {
+                "val": 26,
+                "def": 26,
+                "range": {
+                    "min": 0,
+                    "max": 2147483647
+                },
+                "type": "INT"
+            },
+            {
+                "val": 27,
+                "def": 27,
+                "range": {
+                    "min": 0,
+                    "max": 2147483647
+                },
+                "type": "INT"
+            },
+            {
+                "val": 28,
+                "def": 28,
+                "range": {
+                    "min": 0,
+                    "max": 2147483647
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "HEADSET": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "HB_ACTTIMEOUT": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 120000,
+                "def": 120000,
+                "range": {
+                    "min": 3000,
+                    "max": 120000
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "HB_OPENTIMEOUT": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 120000,
+                "def": 120000,
+                "range": {
+                    "min": 3000,
+                    "max": 120000
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "HB_SENDTIMEOUT": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 120000,
+                "def": 120000,
+                "range": {
+                    "min": 3000,
+                    "max": 120000
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "HB_CLOSETIMEOUT": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 2000,
+                "def": 2000,
+                "range": {
+                    "min": 1000,
+                    "max": 120000
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "GTGIS": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "MQTTCFG": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            },
+            {
+                "val": 1024,
+                "def": 1024,
+                "range": {
+                    "min": 0,
+                    "max": 2147483647
+                },
+                "type": "INT"
+            },
+            {
+                "val": 1500,
+                "def": 1500,
+                "range": {
+                    "min": 0,
+                    "max": 2147483647
+                },
+                "type": "INT"
+            },
+            {
+                "val": 1024,
+                "def": 1024,
+                "range": {
+                    "min": 0,
+                    "max": 2147483647
+                },
+                "type": "INT"
+            },
+            {
+                "val": 10,
+                "def": 10,
+                "range": {
+                    "min": 0,
+                    "max": 2147483647
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "GISCLOSECACHE":{
+        "persistence": true,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "LPGNUM": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 54,
+                "def": 54,
+                "enum": [
+                    53,
+                    54
+                ],
+                "type": "INT"
+            }
+        ]
+    },
+    "SIMPHASE": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 1,
+                "def": 1,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "dataformat": {
+        "visible": 2,
+        "persistence": false,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            },
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "viewmode": {
+        "visible": 2,
+        "persistence": false,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "transpktsize": {
+        "visible": 2,
+        "persistence": false,
+        "params": [
+            {
+                "val": 1024,
+                "def": 1024,
+                "range": {
+                    "min": 1,
+                    "max": 1460
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "passiveclosed": {
+        "visible": 2,
+        "persistence": false,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "send/buffersize": {
+        "visible": 2,
+        "persistence": false,
+        "params": [
+            {
+                "val": 1460,
+                "def": 1460,
+                "range": {
+                    "min": 1460,
+                    "max": 10240
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "formatcfg": {
+        "visible": 2,
+        "persistence": false,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "qisend/timeout": {
+        "visible": 2,
+        "persistence": false,
+        "params": [
+            {
+                "val": 120,
+                "def": 120,
+                "range": {
+                    "min": 0,
+                    "max": 120
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "close/mode": {
+        "visible": 2,
+        "persistence": false,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "send_view_mode": {
+        "visible": 2,
+        "persistence": false,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "bypasecho": {
+        "visible": 20,
+        "persistence": false,
+        "params": [
+            {
+                "val": 1,
+                "def": 1,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "recvind": {
+        "visible": 2,
+        "persistence": false,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "AUDRECPRI": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 1,
+                "def": 1,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            },
+            {
+                "val": 1,
+                "def": 1,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            },
+            {
+                "val": 1,
+                "def": 1,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "SETMCELLTMOUT": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 1800,
+                "def": 1800,
+                "range": {
+                    "min": 0,
+                    "max": 10000
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "SETMCELL": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "DOWNLOADMODE": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "CMCC_DM": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 2,
+                "def": 2,
+                "range": {
+                    "min": 0,
+                    "max": 3
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "ECM_AUTO": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "SSID_FORMAT": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "TLPG": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 1,
+                "def": 1,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "GTDEBOUNCE_TIMES": {
+        "visible": 20,
+        "persistence": true,
+        "params": [
+            {
+                "val": 5,
+                "def": 5,
+                "range": {
+                    "min": 0,
+                    "max": 20
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "GTDEBOUNCE_PERIOD": {
+        "visible": 20,
+        "persistence": true,
+        "params": [
+            {
+                "val": 200,
+                "def": 200,
+                "range": {
+                    "min": 0,
+                    "max": 400
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "USIM_DETECT": {
+        "visible": 20,
+        "persistence": true,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "GTFMODE": {
+        "visible": 20,
+        "persistence": true,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "LPM": {
+        "visible": 3,
+        "persistence": true,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 2
+                },
+                "type": "INT"
+            },
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "GTPMTIME": {
+        "visible": 3,
+        "persistence": true,
+        "params": [
+            {
+                "val": 200,
+                "def": 200,
+                "range": {
+                    "min": 100,
+                    "max": 1000
+                },
+                "type": "INT"
+            },
+            {
+                "val": 200,
+                "def": 200,
+                "range": {
+                    "min": 100,
+                    "max": 1000
+                },
+                "type": "INT"
+            },
+            {
+                "val": 2000,
+                "def": 2000,
+                "range": {
+                    "min": 1000,
+                    "max": 5000
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "LOCREL": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 20
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "ACTRETRY": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 10,
+                "def": 10,
+                "range": {
+                    "min": 5,
+                    "max": 30
+                },
+                 "type": "INT"
+            },
+            {
+                "val": 4,
+                "def": 4,
+                "range": {
+                    "min": 2,
+                    "max": 4
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "DEARETRY": {
+            "persistence": true,
+            "params": [
+            {
+                "val": 8,
+                "def": 8,
+                "range": {
+                    "min": 2,
+                    "max": 8
+                },
+                "type": "INT"
+            },
+            {
+                "val": 4,
+                "def": 4,
+                "range": {
+                    "min": 2,
+                    "max": 4
+                },
+                "type": "INT"
+            }
+        ]
+    },
+	"CLVL": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 8,
+                "def": 8,
+                "range": {
+                    "min": 0,
+                    "max": 8
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "tcp/keepalive": {
+        "visible": 2,
+        "persistence": false,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            },
+            {
+                "val": 1,
+                "def": 1,
+                "range": {
+                    "min": 1,
+                    "max": 1800
+                },
+                "type": "INT"
+            },
+            {
+                "val": 25,
+                "def": 25,
+                "range": {
+                    "min": 25,
+                    "max": 100
+                },
+                "type": "INT"
+            },
+			{
+                "val": 3,
+                "def": 3,
+                "range": {
+                    "min": 3,
+                    "max": 10
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "TUOKUO_VBAT_NV": {
+        "visible": 3,
+        "persistence": true,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 4500
+                },
+                "type": "INT"
+            },
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 4500
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "TUOKUO_PIR_NV": {
+        "visible": 3,
+        "persistence": true,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            },
+            {
+                "val": 2000,
+                "def": 2000,
+                "range": {
+                    "min": 1000,
+                    "max": 30000
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "TUOKUO_TIME_NV": {
+        "visible": 3,
+        "persistence": true,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            },
+            {
+                "val": 60,
+                "def": 60,
+                "range": {
+                    "min": 1,
+                    "max": 86400
+                },
+                "type": "INT"
+            }
+        ]
+    },
+	"pdp/duplicatechk": {
+        "visible": 4,
+        "persistence": false,
+        "params": [
+            {
+                "val": 1,
+                "def": 1,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "SIM_SLOT": {
+        "visible": 20,
+        "persistence": true,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "CCLK_MS": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+		"MMICG": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 12,
+                "def": 12,
+                "range": {
+                    "min": 0,
+                    "max": 15
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "DNSPRI": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+	"CFUN_DFLT": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 1,
+                "def": 1,
+                "range": {
+                    "min": 0,
+                    "max": 4
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "MAXPWR": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 255,
+                "def": 255,
+                "range": {
+                    "min": 0,
+                    "max": 255
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "SSLFILESAVE": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 0,
+                "def": 0,
+                "range": {
+                    "min": 0,
+                    "max": 1
+                },
+                "type": "INT"
+            }
+        ]
+    },
+    "BANDPWR": {
+        "persistence": true,
+        "params": [
+            {
+                "val": 255,
+                "def": 255,
+                "range": {
+                    "min": 0,
+                    "max": 255
+                },
+                "type": "INT"
+            },
+            {
+                "val": 255,
+                "def": 255,
+                "range": {
+                    "min": 1,
+                    "max": 255
+                },
+                "type": "INT"
+            }
+        ]
+    }
+}

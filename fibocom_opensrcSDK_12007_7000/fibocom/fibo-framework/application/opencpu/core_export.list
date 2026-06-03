@@ -1,0 +1,668 @@
+#头文件目录,相对路径
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/oc_osi.h
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/fibo_opencpu.h
+#INCPATH  gccout/fibo_opencpu_api.h
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/oc_libc.h
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/oc_socket.h
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/oc_gprs.h
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/oc_http.h
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/oc_ftp.h
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/oc_mqtt.h
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/oc_lbs.h
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/oc_ffs.h
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/oc_ssl.h
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/oc_other.h
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/oc_uart.h
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/oc_gpio.h
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/oc_adc.h
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/oc_lpm.h
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/oc_spi.h
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/oc_i2c.h
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/oc_usb.h
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/oc_innerflash.h
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/oc_keypad.h
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/oc_pwm.h
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/oc_fota.h
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/oc_heartbeat.h
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/oc_gb2312_unicode.h
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/oc_tts.h
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/oc_mqtt_cloud.h
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/oc_ble.h
+
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/fibo_opencpu_comm.h
+#INCPATH  middleware/thirdparty/lwip
+#INCPATH  fibocom/fibo-framework/PAL/include/ffw_socket.h
+#INCPATH  fibocom/fibo-framework/module/ffw_network/include/ffw_sockaddr.h
+#INCPATH  fibocom/fibo-framework/common/include/ffw_types.h
+#INCPATH  fibocom/fibo-framework/PAL/include/ffw_os.h
+#INCPATH  fibocom/fibo-framework/PAL/include/ffw_uart.h
+#INCPATH  fibocom/fibo-framework/PAL/include/ffw_device.h
+#INCPATH  fibocom/fibo-framework/PAL/include/ffw_spi.h
+#INCPATH  fibocom/fibo-framework/PAL/include/ffw_i2c.h
+#INCPATH  fibocom/fibo-framework/PAL/include/ffw_keypad.h
+
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/oc_cell.h
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/oc_extflash.h
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/oc_audio.h
+
+#INCPATH  prebuild/PLAT/inc/cmsis_os2.h
+#INCPATH  os/freertos/CMSIS/ap/inc/cmsis_os2.h
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/oc_gnss.h
+#INCPATH  middleware/developed/fota/pub/fota_pub.h
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/oc_ws.h
+#INCPATH  fibocom/fibo-framework/application/opencpu/include/oc_sms.h
+
+#INCPATH  fibocom/fibo-framework/module/ffw_key/ffw_key.h
+
+#include "oc_osi.h"
+#include "oc_libc.h"
+#include "oc_socket.h"
+#include "oc_gprs.h"
+#include "oc_http.h"
+#include "oc_ftp.h"
+#include "oc_mqtt.h"
+#include "oc_lbs.h"
+#include "oc_ffs.h"
+#include "oc_ssl.h"
+#include "oc_other.h"
+#include "oc_uart.h"
+#include "oc_gpio.h"
+#include "oc_adc.h"
+#include "oc_lpm.h"
+#include "oc_pwm.h"
+#include "oc_spi.h"
+#include "oc_i2c.h"
+#include "oc_usb.h"
+#include "oc_innerflash.h"
+#include "oc_keypad.h"
+#include "oc_fota.h"
+#include "oc_heartbeat.h"
+#include "oc_gb2312_unicode.h"
+#include "oc_tts.h"
+#include "oc_mqtt_cloud.h"
+#include "oc_cell.h"
+#include "oc_extflash.h"
+#include "time.h"
+#include "oc_audio.h"
+#include "oc_gnss.h"
+#include "fota_pub.h"
+#include "oc_ws.h"
+#include "oc_sms.h"
+#include "oc_ble.h"
+
+int fibo_vsnprintf(char *buff,int n, const char *fmt,va_list arg);
+int fibo_printf_text(const char *str);
+
+void* fibo_timer_create(void (*fn)(void *arg), void *arg,bool isIRQ);
+bool fibo_timer_start(void* timer, UINT32 time,bool isPeriod);
+INT32 fibo_timer_delete(void * timer);
+INT32 fibo_timer_stop(void * timer);
+INT32 fibo_heapinfo_get(uint32_t * size,uint32_t *avail_size,uint32_t *max_block_size);
+UINT32 fibo_queue_create(UINT32 msg_count, UINT32 msg_size);
+INT32 fibo_queue_put(UINT32 msg_id, const void *msg, UINT32 timeout);
+INT32 fibo_queue_put_to_front(UINT32 msg_id, const void *msg, UINT32 timeout);
+INT32 fibo_queue_get(UINT32 msg_id, void *msg, UINT32 timeout);
+INT32 fibo_queue_put_isr(UINT32 msg_id, const void *msg);
+INT32 fibo_queue_put_to_front_isr(UINT32 msg_id, const void *msg);
+INT32 fibo_queue_get_isr(UINT32 msg_id, void *msg);
+void fibo_queue_delete(UINT32 msg_id);
+UINT32 fibo_queue_space_available(UINT32 msg_id);
+void fibo_queue_reset(UINT32 msg_id);
+UINT32 fibo_mutex_create(void);
+void fibo_mutex_lock(UINT32 mutex_id);
+INT32 fibo_mutex_try_lock(UINT32 mutex_id, UINT32 timeout);
+void fibo_mutex_unlock(UINT32 mutex_id);
+void fibo_mutex_delete(UINT32 mutex_id);
+void fibo_taskSleep(UINT32 msec);
+INT32 fibo_thread_create(void *pvTaskCode, INT8 *pcName, UINT32 usStackDepth, void *pvParameters, UINT32 uxPriority);
+INT32 fibo_thread_create_ex(void *pvTaskCode, char *pcName, UINT32 usStackDepth, void *pvParameters, UINT32 uxPriority, UINT32* pThreadId);
+void fibo_thread_delete(void);
+UINT64 fibo_get_sys_tick(void);
+void *fibo_malloc(UINT32 size);
+INT32 fibo_free(void *buffer);
+INT32 fibo_soft_reset(void);
+INT32 fibo_soft_power_off(void);
+INT32 fibo_softPowerOff(void);
+UINT32 fibo_sem_new(UINT8 inivalue);
+void fibo_sem_free(UINT32 semid);
+void fibo_sem_wait(UINT32 semid);
+bool fibo_sem_try_wait(UINT32 semid, UINT32 timeout);
+void fibo_sem_signal(UINT32 semid);
+INT32 fibo_rng_generate(void *buf, UINT32 len);
+UINT32 fibo_get_thread_stack_remaining_size(UINT32 ThreadId);
+UINT32 fibo_thread_id(void);
+
+void fibo_sock_freeaddrinfo(fibo_addrinfo_t *ai);
+int fibo_sock_accept_v2(int s, struct sockaddr *addr, uint32_t *addrlen);
+int fibo_sock_bind_v2(int s, const struct sockaddr *name, uint32_t namelen);
+int fibo_sock_shutdown(int s, int how);
+int fibo_sock_getpeername(int s, struct sockaddr *name, uint32_t *namelen);
+int fibo_sock_getsockname(int s, struct sockaddr *name, uint32_t *namelen);
+int fibo_sock_setsockopt(int s, int level, int optname, const void *optval, uint32_t optlen);
+int fibo_sock_getsockopt(int s, int level, int optname, void *optval, uint32_t *optlen);
+int fibo_sock_close_v2(int s);
+int fibo_sock_connect_v2(int s, const struct sockaddr *name, uint32_t namelen);
+int fibo_sock_listen_v2(int s, int backlog);
+ssize_t fibo_sock_recv_v2(int s, void *mem, size_t len, int flags);
+ssize_t fibo_sock_recvfrom_v2(int s, void *mem, size_t len, int flags, struct sockaddr *from, uint32_t *fromlen);
+ssize_t fibo_sock_send_v2(int s, const void *dataptr, size_t size, int flags);
+ssize_t fibo_sock_sendto(int s, const void *dataptr, size_t size, int flags, const struct sockaddr *to, uint32_t tolen);
+int fibo_sock_socket(int domain, int type, int protocol);
+int fibo_sock_select(int maxfdp1, fd_set *readset, fd_set *writeset, fd_set *exceptset, struct timeval *timeout);
+ssize_t fibo_sock_read(int s, void *mem, size_t len);
+ssize_t fibo_sock_write(int s, const void *dataptr, size_t size);
+int fibo_sock_fcntl(int s, int cmd, int val);
+int fibo_sock_ioctl(int s, long cmd, void *argp);
+void* fibo_sock_getDefaultNetif();
+char *fibo_sock_ip6addr_ntoa_r(const ip6_addr_t *addr, char *buf, int buflen);
+char *fibo_sock_ip4addr_ntoa_r(const ip4_addr_t *addr, char *buf, int buflen);
+int fibo_sock_ip6addr_aton(const char *cp, ip6_addr_t *addr);
+int fibo_sock_ip4addr_aton(const char *cp, ip4_addr_t *addr);
+INT32 fibo_errno_get(void);
+INT32 fibo_sock_ntp(char *addr, int port, int nSimID, key_callback cb);
+INT32 fibo_mping_v2(fibo_ping_para *paras);
+INT32 fibo_get_addrinfo(fibo_addrinfo_para *paras);
+INT32 fibo_dns_get(uint8_t simid, uint8_t cid, char *priv4, char *secv4, char *priv6, char *secv6);
+INT32 fibo_get_global_DNS(char *pri_dns, char *sec_dns);
+INT32 fibo_set_global_DNS(const char *pri_dns, const char *sec_dns);
+INT32 fibo_sock_create(INT32 nProtocol);
+INT32 fibo_sock_create_ex(int domain, int type, int protocol);
+INT32 fibo_get_socket_error(void);
+INT32 fibo_sock_close(INT32 sock);
+INT32 fibo_sock_connect(INT32 sock, GAPP_TCPIP_ADDR_T *addr);
+INT32 fibo_sock_listen(INT32 sock);
+INT32 fibo_sock_bind(INT32 sock, GAPP_TCPIP_ADDR_T *addr);
+INT32 fibo_sock_accept(INT32 sock, GAPP_TCPIP_ADDR_T *addr);
+INT32 fibo_sock_send(INT32 sock, UINT8 *buff, UINT16 len);
+INT32 fibo_sock_send2(INT32 sock, UINT8 *buff, UINT16 len, GAPP_TCPIP_ADDR_T *dest);
+INT32 fibo_sock_recv(INT32 sock, UINT8 *buff, UINT16 len);
+INT32 fibo_sock_recvFrom(INT32 sock, UINT8 *buff, UINT16 len, GAPP_TCPIP_ADDR_T *src);
+INT32 fibo_getHostByName(char *hostname, ip_addr_t *addr, uint8_t nCid, int nSimID);
+INT32 fibo_sock_setOpt(INT32 sock, INT32 level, INT32 optname, const void *optval, INT32 optlen);
+INT32 fibo_sock_getOpt(INT32 sock, INT32 level, INT32 optname, void *optval, INT32 *optlen);
+INT32 fibo_sock_lwip_select(int maxfdp1, fd_set *readset, fd_set *writeset, fd_set *exceptset,struct timeval *timeout);
+INT32 fibo_sock_lwip_fcntl(int s, int cmd, int val);
+
+INT32 fibo_pdp_active(UINT8 active, fibo_pdp_profile_t *pdp_profile, uint8_t nSimID);
+INT32 fibo_pdp_release(UINT8 deactive, INT32 cid, CFW_SIM_ID nSimID);
+INT32 fibo_pdp_status_get(INT8 cid, UINT8 *ip, UINT8 *cid_status, uint8_t nSimID);
+INT32 fibo_initial_pdp_set(INT8 set_delete, uint8_t pdptype, char *apn, uint8_t nAuthProt,char *username,char *pwd, uint8_t nSim);
+INT32 fibo_reg_info_get(reg_info_t *reg_info, uint8_t nSimID);
+
+#HTTP_API_START
+oc_http_param_t *fibo_http_new(void);
+void fibo_http_delete(oc_http_param_t *pstHttpParam);
+INT32 fibo_http_get(oc_http_param_t *pstHttpParam, uint8_t *pUserDefHeader);
+INT32 fibo_http_head(oc_http_param_t *pstHttpParam, uint8_t *pUserDefHeader);
+INT32 fibo_http_post(oc_http_param_t *pstHttpParam, uint8_t *pPostData, uint8_t *pUserDefHeader);
+void fibo_http_read_body_callback(http_read_body_callback callback);
+void fibo_http_read_header_callback(http_read_header_callback callback);
+INT32 fibo_http_response_header_foreach(oc_http_param_t *pstHttpParam,http_read_header_callback callback);
+INT32 fibo_http_response_status_line(oc_http_param_t *pstHttpParam);
+INT32 fibo_http_post_ex(oc_http_param_t *pstHttpParam, UINT8 *pPostData,UINT8 *pUserDefHeader,size_t length);
+INT32 fibo_audio_url_play(UINT8 *url, void *playback, void *arg);
+INT32 fibo_audio_url_stop(void);
+INT32 fibo_audio_url_status(void);
+INT32 fibo_http_get_sync(const char *url, oc_http_header_t *headers, int header_num, int timeout, oc_htpp_data_callback_t data_callback, void *arg);
+#HTTP_API_END
+
+
+#FTP_API_START
+INT32 fibo_ftp_open(char *server_addr, char *username, char *passwd);
+INT32 fibo_ftps_open(char *server_addr, char *username, char *passwd);
+INT32 fibo_ftp_write(char *server_path, char *local_path);
+INT32 fibo_ftp_read(char *server_path, char *local_path);
+INT32 fibo_ftp_close();
+#FTP_API_END
+
+#MQTT_API_START
+UINT32 fibo_mqtt_set_psk(const INT8 *psk_id, const INT8 *psk_key);
+UINT32 fibo_mqtt_set_tls_ver(INT32 ver);
+UINT32 fibi_mqtt_set_psk(const INT8 *psk_id, const INT8 *psk_key);
+UINT32 fibi_mqtt_set_tls_ver(INT32 ver);
+INT32 fibo_mqtt_set(INT8 *usr, INT8 *pwd);
+INT32 fibo_mqtt_will(INT8 *topic, UINT8 qos, BOOL retain, INT8 *message);
+INT32 fibo_mqtt_connect(INT8 *ClientID, INT8 *DestAddr, UINT16 DestPort, UINT8 CLeanSession, UINT16 keepalive, UINT8 UseTls);
+INT32 fibo_mqtt_pub(INT8 *topic, UINT8 qos, BOOL retain, INT8 *message, UINT16 msglen);
+INT32 fibo_mqtt_sub(INT8 *topic, UINT8 qos);
+INT32 fibo_mqtt_unsub(INT8 *topic);
+INT32 fibo_mqtt_close(void);
+INT32 fibo_mqtt_set1(UINT8 id, INT8 *usr, INT8 *pwd);
+INT32 fibo_mqtt_will1(UINT8 id, INT8 *topic, UINT8 qos, BOOL retain, INT8 *message);
+INT32 fibo_mqtt_connect1(UINT8 id, INT8 *ClientID, INT8 *DestAddr, UINT16 DestPort, UINT8 CLeanSession, UINT16 keepalive, UINT8 UseTls);
+INT32 fibo_mqtt_pub1(UINT8 id, INT8 *topic, UINT8 qos, BOOL retain, INT8 *message, UINT16 msglen);
+INT32 fibo_mqtt_sub1(UINT8 id, INT8 *topic, UINT8 qos);
+INT32 fibo_mqtt_unsub1(UINT8 id, INT8 *topic);
+INT32 fibo_mqtt_close1(UINT8 id);
+INT32 fibo_mqtt_connect_v2(INT8 *ClientID, INT8 *DestAddr, UINT16 DestPort, UINT8 CLeanSession, UINT16 keepalive, UINT8 UseTls, int32_t timeout);
+INT32 fibo_mqtt_pub_v2(INT8 *topic, UINT8 qos, BOOL retain, INT8 *message, UINT16 msglen, uint16_t *pacid);
+INT32 fibo_mqtt_sub_v2(INT8 *topic, UINT8 qos, uint16_t *pacid);
+INT32 fibo_mqtt_unsub_v2(INT8 *topic, uint16_t *pacid);
+#MQTT_API_END
+
+#LBS_API_START
+INT32 fibo_lbs_get_gisinfo_v2(char *key, UINT8 type, uint8_t simid, fibo_lbs_res_t *lbsinfo, INT32 timeout);
+#LBS_API_END
+
+#WIFISCAN_API_START
+INT32 fibo_wifiscan_v2(uint8_t simid, key_callback cb);
+#WIFISCAN_API_END
+
+INT32 fibo_file_open(const char *path, INT32 flags);
+INT32 fibo_file_close(INT32 fd);
+INT32 fibo_file_read(INT32 fd, UINT8 *buff, UINT32 count);
+INT32 fibo_file_write(INT32 fd, UINT8 *buff, UINT32 count);
+INT32 fibo_file_seek(INT32 fd, INT32 offset, UINT8 opt);
+INT32 fibo_file_rename(const char *oldpath, const char *newpath);
+INT32 fibo_file_rmdir(const char *path);
+INT32 fibo_file_mkdir(const char *path);
+INT32 fibo_file_exist(const char *path);
+INT32 fibo_file_get_size(const char *path);
+INT32 fibo_file_delete(const char *path);
+INT32 fibo_file_get_free_size(void);
+INT32 fibo_file_getSize(const char *path);
+INT32 fibo_file_getFreeSize(void);
+INT32 fibo_file_get_total_size(void);
+INT32 fibo_file_stat(const char *path, struct fibo_stat *st);
+INT32 fibo_file_fsync(int fd);
+INT32 fibo_file_unlink(const char *path);
+void *fibo_file_opendir(const char *path);
+struct fibo_dirent *fibo_file_readdir(void *pdir);
+INT32 fibo_file_telldir(void *pdir);
+void fibo_file_seekdir(void *pdir, long loc);
+INT32 fibo_file_feof(int fd);
+INT32 fibo_file_ftell(int fd);
+INT32 fibo_file_dir_exist(const char *path);
+INT32 fibo_file_closedir(void *pdir);
+INT32 fibo_file_differdir(const char * file_path);
+INT32 fibo_file_unzip(const char * file_path, const char * zip_path);
+INT32 fibo_file_getFreeSize_ex(const char *dir_path);
+
+#SSL_API_START
+INT32 fibo_ssl_set_ver(int ver);
+INT32 fibo_ssl_write_file(INT8 *type_str, UINT8 *buff, UINT16 len);
+INT32 fibo_ssl_chkmode_set(UINT8 mode);
+INT32 fibo_ssl_errcode_get(void);
+INT32 fibo_ssl_sock_create(void);
+INT32 fibo_ssl_sock_close(INT32 sock);
+INT32 fibo_ssl_sock_connect(INT32 sock, const char *addr, UINT16 port);
+INT32 fibo_ssl_sock_send(INT32 sock, UINT8 *buff, UINT16 len);
+INT32 fibo_ssl_sock_recv(INT32 sock, UINT8 *buff, UINT16 len);
+UINT32 fibo_ssl_sock_fd_get(INT32 sock);
+void fibo_ssl_default(void);
+INT32 fibo_write_ssl_file(INT8 *type_str,UINT8 *buff,UINT16 len);
+void fibo_set_ssl_chkmode(UINT8 mode);
+INT32 fibo_get_ssl_errcode(void);
+INT32 fibo_ssl_sign(fibo_md_type_t md_type, bool hmac, const uint8_t *key, int key_len, const uint8_t *payload, int payload_len, uint8_t *result);
+#SSL_API_END
+
+int fibo_sim_pin_status(int *state, unsigned *pinremaintries,unsigned *pukremaintries,uint8_t simid);
+INT8 *fibo_get_verno_ys(void);
+INT32 fibo_hal_uart_init(hal_uart_port_t uart_port, hal_uart_config_t *uart_config, uart_input_callback_t recv_cb, void *arg);
+INT32 fibo_hal_uart_deinit(hal_uart_port_t uart_port);
+INT32 fibo_hal_uart_put(hal_uart_port_t uart_port, UINT8 *buff, UINT32 len);
+
+INT32 fibo_gpio_mode_set(SAPP_IO_ID_T id, UINT8 mode);
+INT32 fibo_gpio_cfg(SAPP_IO_ID_T id, SAPP_GPIO_CFG_T cfg);
+INT32 fibo_gpio_get(SAPP_IO_ID_T id, UINT8 *level);
+INT32 fibo_gpio_set(SAPP_IO_ID_T id, UINT8 level);
+INT32 fibo_gpio_pull_up_or_down(SAPP_IO_ID_T id,bool is_pull_up);
+INT32 fibo_gpio_pull_disable(SAPP_IO_ID_T id);
+INT32 fibo_gpio_isr_deinit(SAPP_IO_ID_T id);
+INT32 fibo_gpio_isr_init(SAPP_IO_ID_T id, oc_isr_t* isr_cfg);
+bool fibo_pmu_ctrl(UINT32 id, BOOL enabled, BOOL lp_enabled);
+INT32 fibo_pmu_setlevel(UINT8 pmu_type,UINT8 level);
+
+INT32 fibo_hal_adc_init(void);
+INT32 fibo_hal_adc_deinit(void);
+INT32 fibo_hal_adc_get_data(hal_adc_channel_t channel, UINT32 scale_value);
+INT32 fibo_hal_adc_get_data_polling(hal_adc_channel_t channel, UINT32 *data);
+
+int32_t fibo_setSleepMode(uint8_t time);
+
+INT32 fibo_spi_open(drvSpiConfig_t cfg, SPIHANDLE *spiFd);
+INT32 fibo_spi_close(SPIHANDLE *spiFd);
+INT32 fibo_spi_send(SPIHANDLE spiFd, SPI_IOC spiIoc, void *sendaddr, uint32_t size);
+INT32 fibo_spi_recv(SPIHANDLE spiFd, SPI_IOC spiIoc, void *readaddr, uint32_t size);
+INT32 fibo_spi_send_rcv(SPIHANDLE spiFd, SPI_IOC spiIoc, void *sendaddr, void *readaddr, uint32_t size);
+
+INT32 fibo_i2c_open(HAL_I2C_BPS_T bps, i2c_Handle *i2c_handle);
+INT32 fibo_i2c_close(i2c_Handle *i2c_handle);
+INT32 fibo_i2c_Write(i2c_Handle i2c_handle, drvI2cSlave_t idAddress, UINT8 *Buffer, UINT8 bufferlen);
+INT32 fibo_i2c_Read(i2c_Handle i2c_handle, drvI2cSlave_t idAddress, UINT8 *Buffer, UINT8 bufferlen);
+INT32 fibo_i2c_xfer(i2c_Handle i2c_handle, drvI2cSlave_t idAddress, UINT8 *send_Buffer, UINT8 send_bufferlen, UINT8 *recv_Buffer, UINT8 recv_bufferlen);
+
+#USB_API_START
+INT8 fibo_usbswitch(uint8_t en);
+INT32 fibo_set_usbmode(uint8_t usbmode);
+INT32 fibo_get_usbmode(void);
+UINT8 fibo_usbDevice_init(char *name, usb_input_callback_t recv_cb);
+UINT8 fibo_usbDevice_deinit(int usb_channel);
+UINT32 fibo_usbDevice_send(int usb_channel, const void *data, size_t length);
+INT8 fibo_get_usbisinsert(void);
+int FIBO_usbDevice_State_report(int usb_channel, Report_UsbDev_Event  usedev_Event);
+#USB_API_END
+
+bool fibo_get_log_status(uint8_t *Apsetport, uint8_t *Apport, uint8_t *Apenable, uint8_t *Cpport, uint8_t *Cpenable);
+
+bool fibo_pwrkeypad_config(UINT32 timeout, bool Ispwroff);
+
+INT32 fibo_inner_flash_init(void);
+INT32 fibo_inner_flash_info(UINT32 *pulId, UINT32 *pulCapacity);
+INT32 fibo_inner_flash_read(UINT32 faddr, UINT8 *data,UINT32 size);
+INT32 fibo_inner_flash_write(UINT32 faddr, UINT8 *data,UINT32 size);
+INT32 fibo_inner_flash_erase(UINT32 faddr, UINT32 size);
+
+bool fibo_pwm_open(int32_t index);
+void fibo_pwm_config(int32_t index, uint16_t duty, uint16_t arr, uint16_t psc);
+void fibo_pwm_close(void);
+bool fibo_pwm_close_v2(int32_t index);
+
+#FOTA_API_START
+INT32 fibo_firmware_ota(UINT8 type, UINT8 *url,UINT8 *filename,UINT8 *username,UINT8 *password);
+INT32 fibo_firmware_handle_no_reboot(INT8 *data, UINT32 len);
+INT32 fibo_firmware_handle(INT8 *data, UINT32 len);
+INT32 fibo_firmware_dl(UINT8 type,UINT8 *url,UINT8 *filename,UINT8 *username,UINT8 *password);
+INT32 fibo_firmware_update(void);
+void fibo_ota_set_callback(fota_download_cb_t cb);
+INT32 fibo_ota_errcode(void);
+#FOTA_API_END
+
+#HEARTBEAT_API_START
+bool fibo_heartbeat_param_set(char *serverip, uint16_t port,  uint16_t time, char *hexdata);
+bool fibo_enable_heartbeat(uint8_t cid,  uint8_t nsim, int32_t mode, int32_t protocol);
+bool fibo_set_heartbeat_reconnect_timer(uint16_t time1, uint16_t time2,uint16_t time3,uint16_t time4,uint16_t time5,uint16_t time6);
+#HEARTBEAT_API_END
+
+#GBK2UNICODE_API_START
+INT32 fibo_gb2312_to_unicode(UINT16 gb_char, INT32 gb_length, UINT16* unicode_char, INT32* unicode_length);
+INT32 fibo_unicode_to_gb2312(UINT16 unicode_char, INT32 unicode_length, UINT16* gb_char, INT32 *gb_length);
+#GBK2UNICODE_API_END
+
+#TTS_API_START
+bool fibo_tts_is_playing(void);
+INT32 fibo_tts_stop(void);
+INT32 fibo_tts_start(const UINT8 *pData, INT8 cEncode);
+INT32 fibo_tts_voice_speed(INT32 speed);
+INT32 fibo_tts_voice_pitch(INT32 pitch);
+#TTS_API_END
+
+#MQTTCLOUD_API_START
+INT32 fibo_mqtt_aliyun_config(const uint8_t* product_key, const uint8_t* device_name, const uint8_t* device_secret, bool tls_enable);
+INT32 fibo_mqtt_tecent_config(const uint8_t* product_id, const uint8_t* device_name, const uint8_t* device_secret);
+INT32 fibo_mqtt_huawei_config(const uint8_t* device_name, const uint8_t* device_secret);
+INT32 fibo_mqtt_onenet_config(const uint8_t *productid, const uint8_t *devicename, const uint8_t *accessKey);
+INT32 fibo_mqtt_baidu_config(const uint8_t *iotcoreid, const uint8_t *devicekey,const uint8_t *devicesecret);
+INT32 fibo_mqtt_tuya_config(int32_t actiontype, const uint8_t *productkey, const uint8_t *uuid, const uint8_t *authkey);
+INT32 fibo_mqtt_tuya_bind_info_del(void);
+INT32 fibo_mqtt_aliyun_dynamic(const uint8_t* product_key, const uint8_t* product_secret, const uint8_t* device_name, const uint8_t* host, int32_t port);
+INT32 fibo_mqtt_tecent_dynamic(const uint8_t* productId, const uint8_t* deviceName, const uint8_t* productSecret, const uint8_t *url);
+INT32 fibo_mqtt_aep_config(const uint8_t *productid, const uint8_t *devicenumber,const uint8_t *token,const uint8_t *aepusername);
+#MQTTCLOUD_API_END
+
+INT32 fibo_at_send(const UINT8 *cmd, UINT16 len);
+
+INT32 fibo_base64_encode(unsigned char *dst, size_t dlen, size_t *olen, const unsigned char *src, size_t slen);
+INT32 fibo_base64_decode(unsigned char *dst, size_t dlen, size_t *olen, const unsigned char *src, size_t slen);
+
+INT32 fibo_local_time_set(local_time_t *time);
+INT32 fibo_local_time_get(local_time_t *time);
+INT32 fibo_local_timezone_set(int8_t timezone);
+INT32 fibo_local_timezone_get(void);
+
+INT32 fibo_get_imei(UINT8 *imei, uint8_t nSimID);
+INT32 fibo_get_sn(char* deviceSN, uint8_t nSimID);
+
+INT32 fibo_lpg_switch(UINT8 ucLpgSwitch);
+
+INT32 fibo_set_mcal(CFW_NW_NST_TX_PARA_CONFIG *nst_para_config, CFW_SIM_ID nSimID);
+INT32 fibo_set_mcal_dev(UINT8 ucDevValue,CFW_SIM_ID nSimID);
+
+INT8 fibo_sim_detect_switch(uint8_t nSlotStatus);
+int fibo_set_sim_slot(uint8_t simid);
+uint8_t fibo_get_sim_slot();
+int fibo_set_customize_app_register(void *CustomizeHandleFun);
+
+INT32 fibo_get_iccid(uint8_t *ccid,uint8_t simId);
+INT32 fibo_get_sim_status_v2(uint8_t *pucSimStatus,uint8_t simId);
+INT32 fibo_get_imsi_asyn(void (*cb)(UINT8 *imsi),uint8_t simId);
+
+INT32 fibo_get_csq(INT32 *rssi, INT32 *ber,uint8_t simId);
+
+bool fibo_locrel_set(uint8_t level,uint8_t simId);
+
+INT32 fibo_cfun_set(uint8_t mode,uint8_t sim);
+UINT8 fibo_cfun_get(uint8_t sim);
+
+INT32 fibo_app_version_set(char *ver);
+INT32 fibo_app_version_get(char *outstr, int32_t outlen);
+
+INT32 fibo_cell_info_get(key_callback cellinfo_refponse_cb,uint8_t nSim);
+
+INT32 fibo_firmware_option_set(UINT8 type, INT8 *path);
+
+int fibo_vsprintf(char *buff, const char *fmt,va_list arg);
+
+#EXTFLASH_API_START
+INT32 fibo_ext_flash_init(uint8_t Pinsel);
+INT32 fibo_ext_flash_read(UINT32 faddr, UINT8 *data,UINT32 size);
+INT32 fibo_ext_flash_write(UINT32 faddr, UINT8 *data,UINT32 size);
+INT32 fibo_ext_flash_erase(UINT32 faddr,UINT32 size);
+INT32 fibo_ext_flash_info(UINT32 *pulId, UINT32 *pulCapacity);
+INT32 fibo_ffsmountExtflash(UINT32 uladdr_start, UINT32 ulsize,char *dir,UINT8 spi_pin_sel,bool format_on_fail,bool force_format);
+void fibo_ext_flash_mode_set(uint8_t mode);
+bool fibo_ext_flash_poweron(uint8_t pinsel, uint8_t val, uint8_t div);
+#EXTFLASH_API_END
+
+#TTS_API_START
+INT32 fibo_tts_cfg(INT32 key, INT32 mode, INT32 *value);
+#TTS_API_END
+
+#FOTA_API_START
+INT32 fibo_firmware_write(INT8 *data, UINT32 len);
+INT32 fibo_firmware_verify(UINT32 mode, INT8 *data, UINT32 len);
+#FOTA_API_END
+
+INT32 fibo_send_cmd(int cmd, void* in_param, unsigned int in_len, void* out_param, unsigned int *out_len);
+INT32 fibo_get_ip_mask_gw_of_ecm(char *ip_addr, char *netmask, char *gateway);
+
+INT8 *fibo_get_sw_verno(void);
+INT32 fibo_get_pdp_ctx(INT8 cid, pdp_profile_t *pdpctx);
+int fibo_utctime_get(INT32 *utc_time);
+INT32 fibo_log_to_usb(bool on);
+UINT8 fibo_get_pwrkeystatus(void);
+INT32 fibo_get_sim_det_level(void);
+UINT8 fibo_getbootcause(void);
+
+#AUDIO_API_START
+bool fibo_audio_status_get(void);
+INT32 fibo_audio_stop(void);
+INT32 fibo_audio_mem_start(UINT8 format, UINT8 *buff, UINT32 size, auPlayerCallback_t cb_ctx);
+INT32 fibo_audio_start_v2(INT32 type,INT8 *filepath,auPlayerCallback_t cb_ctx);
+#AUDIO_API_END
+
+INT32 fibo_external_pa_cfg(paSpec_t *cfg);
+INT32 fibo_extern_codec_cfg(codec_Spec_t *cfg);
+
+int fibo_vsscanf(const char *buf, const char *format, va_list ap);
+struct tm *fibo_gmtime(const time_t *_timer);
+char *fibo_strtok(char *str, const char *delim);
+INT32 fibo_gpio_pull_high_resistance(SAPP_IO_ID_T id, bool is_pull_high);
+INT32 fibo_charge_vbat_vol_get(void);
+INT32 fibo_set_pwr_callback_ex(key_callback pwr_cb,UINT16 long_press,void *arg);
+
+#AUDIO_API_START
+INT32 fibo_get_volume_external(AUDIO_VOLUME_MODE_T mode);
+INT32 fibo_set_volume_external(AUDIO_VOLUME_MODE_T mode,uint8_t level);
+#AUDIO_API_END
+
+double fibo_atof(const char *str);
+
+#AUDIO_API_START
+bool fibo_get_audio_status(void);
+INT32 fibo_audio_play(INT32 type,INT8 *filename);
+INT32 fibo_audio_pause(void);
+INT32 fibo_audio_resume(void);
+INT32 fibo_audio_mem_stop(void);
+INT32 fibo_set_volume(AUDIO_VOLUME_MODE_T mode, uint8_t level);
+INT32 fibo_get_volume(AUDIO_VOLUME_MODE_T mode);
+INT32 fibo_audio_set_codec(fibo_code_type_t codec);
+#AUDIO_API_END
+
+void *fibo_malloc_v1(UINT32 size);
+INT32 fibo_free_v1(void *buffer);
+double fibo_strtod(const char *nptr, char **endptr);
+float fibo_strtof(const char *nptr, char **endptr);
+int fibo_str2int32(const char *str, int32_t *result);
+int fibo_str2uint32(const char *str, uint32_t *result);
+INT32  fibo_firmware_del();
+struct tm *fibo_gmtime_r(const time_t *timep, struct tm *result);
+
+#GNSS_API_START
+int32_t fibo_gnss_enable(uint8_t en);
+int32_t fibo_gnss_nmea_get(uint8_t *nmea_data, int size);
+int32_t fibo_gnss_nmea_freq_set(int freq);
+int32_t fibo_gnss_set_agnss_mode(int mode);
+int32_t fibo_gnss_set_satellite(int satellite);
+int32_t fibo_gnss_get_satellite(void);
+int32_t fibo_gnss_nmea_config(char *nmea_names, int on);
+int32_t fibo_gnss_cmd_send(void *cmd, int len);
+int32_t fibo_gnss_set_agnss_server(char* host, int host_len, int port, uint8_t srv_type);
+#GNSS_API_END
+
+int fibo_gettimeofday(struct timeval *tv, void *tz);
+const char *fibo_int64_to_string(int64_t number, char *str);
+double fibo_pow(double x, double y);
+double fibo_floor (double x);
+INT32 fibo_multi_pdn_cfg(FIBO_PROTOCOL_E_ID protocol_id, uint8_t cid, uint8_t simid);
+uint32_t nvramCheckFactoryCprsNvValid(void);
+void delay_us(uint32_t us);
+void vTaskSuspendAll(void);
+long xTaskResumeAll(void);
+
+#WS_API_START
+void *fibo_ws_open(const int8 *url, fibo_ws_opt_t *opt, fibo_ws_data_t data_cb, fibo_ws_close_t close_cb, void *arg);
+int32 fibo_ws_send_binary(void *ws_client, const void *data, uint32 size);
+int32 fibo_ws_send_text(void *ws_client, const int8 *data, uint32 size);
+int32 fibo_ws_close(void *ws_client);
+#WS_API_END
+
+#AUDIO_API_START
+INT32 fibo_audio_recorder_stream_start(uint8_t format, uint8_t *audio_buff,  uint32_t *Wp, uint32_t buffsize, auAmrnbMode_t amr_mode);
+INT32 fibo_audio_recorder_stream_stop(void);
+#AUDIO_API_END
+
+double fibo_sqrt(double x);
+double fibo_sin(double x);
+double fibo_asin(double x);
+double fibo_cos(double x);
+
+INT32 fibo_file_fstat(int fd, struct fibo_stat *st);
+osStatus_t osThreadSuspend(osThreadId_t thread_id);
+osStatus_t osThreadResume(osThreadId_t thread_id);
+INT32 fibo_heapinfo_get_v1(uint32_t *size,uint32_t *avail_size,uint32_t *max_block_size);
+
+double fibo_acos(double x);
+double fibo_atan(double x);
+double fibo_atan2(double y, double x);
+double fibo_tan(double x);
+void *realloc(void *ptr, size_t size);
+time_t mktime(struct tm *tm);
+int fibo_sms_send_message(sms_client_handle_type h_sms, fibo_sms_send_msg_info_t *sms_info);
+int fibo_sms_send_smspdu(sms_client_handle_type h_sms,fibo_sms_send_raw_message_data_t raw_message_data,fibo_sms_raw_send_resp_t *raw_resp);
+int fibo_sms_addrxmsghandler(sms_client_handle_type h_sms, fibo_sms_rxmsg_handler_func_t handlerPtr);
+int fibo_sms_getsmscenteraddress(sms_client_handle_type h_sms, fibo_sms_service_center_cfg_t *service_center_cfg);
+int fibo_sms_setsmscenteraddress(sms_client_handle_type h_sms, fibo_sms_service_center_cfg_t *service_center_cfg);
+int fibo_sms_read_message(sms_client_handle_type h_sms, fibo_sms_read_message_info_t *read_info,fibo_sms_read_message_req_info_t *read_req_info);
+int fibo_sms_deletefromstorage(sms_client_handle_type h_sms, fibo_sms_storage_info_t *pt_sms_storage);
+int fibo_sms_getmsglist(sms_client_handle_type h_sms,fibo_sms_msg_list_req_info_t *req_info,fibo_sms_msg_list_info_t *resp_info);
+int fibo_sms_getmaxstoresize(sms_client_handle_type h_sms,fibo_sms_get_store_max_size_info_t *pt_sms_storage,fibo_sms_store_max_size_info_t *pt_info);
+
+INT32 fibo_file_truncate(const char *path, int32_t length);
+
+void fibo_app_handle_at_init(fibo_app_handle_at_cb callback);
+void fibo_app_report_default_urc(const char *text, size_t length);
+
+UINT32 fibo_enterCS(void);
+void fibo_exitCS(UINT32 status);
+INT32 fibo_get_operator_info_v1(operator_info_t *operator_info,uint8_t simid);
+int32_t fibo_dm_get_cgmm(dm_client_handle_type h_dm, char *p_cgmm_info, int32_t cgmm_info_size);
+INT32 fibo_get_sim_status(uint8_t *pucSimStatus);
+INT32 fibo_get_ccid(uint8_t *ccid);
+INT32 fibo_getRTC(hal_rtc_time_t *time);
+INT32 fibo_file_ftruncate(INT32 fd, int32_t length);
+
+INT32 fibo_audio_set_data(void * data, uint32_t size);
+INT32 fibo_audio_stream_start(uint8_t format,uint8_t *buff, uint32_t *Rp, uint32_t *Wp, uint32_t buffsize, int32_t timeout);
+INT32 fibo_audio_stream_stop(void);
+INT32 fibo_audio_stream_start_v2(uint8_t format, uint32_t samplerate, uint8_t *buff, uint32_t *Rp, uint32_t *Wp, uint32_t buffsize, int32_t timeout, auPlayerCallback_t cb_ctx);
+
+INT32 fibo_key_register_callback(ffw_key_cb_t cb, void *ctx, UINT32 long_press_time);
+INT32 fibo_key_release_callback(void);
+int32_t fibo_get_mcc_mnc(sim_client_handle_type h_sim,fibo_sim_app_id_info_t *pt_info,char *mcc,char *mnc);
+int fibo_get_NetInfo(uint32_t *pNetInfo, uint8_t DataSize);
+INT32 fibo_get_imsi_by_simid(UINT8 *imsi,uint8_t simId);
+INT32 fibo_localtime_r(int64_t ts, struct tm *tm);
+INT32 fibo_watchdog_feed(void);
+
+int32 fibo_pm_wake_lock(const char *lock_name);
+int32 fibo_pm_wake_unlock(const char *lock_name);
+
+int32 fibo_audio_set_cfg(f_audio_param_cfg_t *cfg);
+int32 fibo_audio_get_cfg(f_audio_param_cfg_t *cfg);
+int fibo_putchar(int character);
+int fibo_puts(const char *str);
+int32 fibo_set_microphone_gain_value(uint8_t value);
+int32 fibo_get_microphone_gain_value(uint8_t *value);
+time_t fibo_time(time_t *utc_time);
+int32 fibo_dm_get_dev_mac(const char *dev_name, char *mac_addr, size_t addr_size);
+void fibo_set_security_flag(void);
+bool fibo_get_security_flag(void);
+
+int fibo_nw_get_config(UINT8 simId, char *name, void *input_param, void *output_param);
+int fibo_nw_set_config(UINT8 simId, char *name, void *input_param, void *output_param);
+int32 fibo_sms_set_config(uint8 simId, char *name, void *input_param, void *output_param);
+int32 fibo_sms_get_config(uint8 simId, char *name, void *input_param, void *output_param);
+
+int32 fibo_ssl_set_config(int ssl_ctx_id, f_ssl_user_config_t *config);
+int32 fibo_ssl_sock_new(int ssl_ctx_id, int32 *sock);
+INT32 fibo_hal_uart_data_to_send(int uart_port);
+void fibo_tesecase_send_urc(const char *text, size_t length);
+
+void fibo_thread_suspend(uint32 uThread);
+void fibo_thread_resume(uint32 uThread);
+
+int32_t fibo_ble_power(void);
+INT32 fibo_ble_onoff(uint8_t onoff);
+INT32 fibo_ble_get_ver(char *ver);
+INT32 fibo_ble_read_addr(uint8_t addr_type,char *addr);
+INT32 fibo_ble_set_read_name(uint8_t set_read,uint8_t *name,uint8_t name_type);
+INT32 fibo_ble_get_connect_state(int *state);
+INT32 fibo_ble_set_dev_param(int param_count,int AdvMin,int AdvMax,int AdvType,int OwnAddrType,int DirectAddrType,int AdvChannMap,int AdvFilter,char *DirectAddr);
+INT32 fibo_ble_set_dev_data(int data_len,char *data);
+INT32 fibo_ble_enable_dev(int onoff);
+INT32 fibo_ble_send_data(int data_len,char *data);
+INT32 fibo_ble_set_read_mtu(uint8_t set_read, int *mtu);
+INT32 fibo_ble_get_peer_mtu(int *mtu);
+INT32 fibo_ble_set_scan_response_data(int data_len,char *data);
+INT32 fibo_ble_recv_data(ble_data_recv_callback callback);
+INT32 fibo_ble_data_request(int data_len,void *data, int timeout);
+INT32 fibo_ble_gtsend_data(int index, int len, void* data);
+INT32 fibo_ble_set_gtuuid(int index, void *uuid, UINT8 attr);
+INT32 fibo_ble_response_to_read(int len, void* data);
+INT32 fibo_ble_disconnect(int index);
+INT32 fibo_ble_response_to_write(UINT8 result);
+INT32 fibo_ble_gatt_service_discover(UINT8 conn_index);
+INT32 fibo_ble_gatt_char_discover(UINT8 conn_index, INT32 handle);
+INT32 fibo_ble_read_request(UINT8 conn_index, UINT16 handle);
+INT32 fibo_ble_write_request(UINT8 conn_index, UINT16 handle, UINT8 *data, UINT16 len, bool need_response);
+INT32 fibo_ble_gatt_subscribe(UINT8 conn_index, UINT16 handle, UINT8 type);
+INT32 fibo_ble_set_auth(int32_t index, int32_t mode, const char *password);
+INT32 fibo_ble_delete_bond_info(const char *mac, int32_t add_type);
+INT32 fibo_ble_get_bond_list(fibo_ble_bond_device_s *list, int32_t *count, int32_t max_count);
+INT32 fibo_ble_notify_indicate(int conn_index, int uuid_index, int mode, int len, void* data);
+INT32 fibo_ble_set_scan_param(uint8_t scan_type, uint8_t filter_policy, uint16_t scan_window, uint16_t scan_interval, uint16_t duration);
+INT32 fibo_ble_scan_switch(uint8_t mode);
+INT32 fibo_ble_connect(uint8_t add_type, char *mac, int timeout, int min_interval, int max_interval, int latency);
+INT32 fibo_ble_sleep_mode(int32_t mode);
+void *fibo_app_start(uint32_t appimg_flash_offset,uint32_t appimg_flash_size,uint32_t appimg_ram_offset,uint32_t appimg_ram_size,void *parm);

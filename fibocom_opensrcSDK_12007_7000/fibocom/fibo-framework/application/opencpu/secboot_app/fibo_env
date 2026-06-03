@@ -1,0 +1,10 @@
+PATH=$(pwd)/gcc-arm-none-eabi/bin:$(pwd)/gcc-arm-none-eabi/arm-none-eabi/bin:$(pwd)/cmake/bin::$PATH
+chmod +x $(pwd)/gcc-arm-none-eabi/bin/*
+chmod +x $(pwd)/cmake/bin/*
+chmod +x $(pwd)/tools/headset
+chmod +x $(pwd)/tools/ptable
+chmod +x $(pwd)/tools/ecsecure
+
+cout() {
+    mkdir -p $(pwd)/out && cd $(pwd)/out
+}
