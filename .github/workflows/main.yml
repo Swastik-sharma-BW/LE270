@@ -2,20 +2,13 @@ name: Build LE270-CN-1D6W7-00-OPEN
 
 on:
   push:
-    branches: [main, master, develop]
-  pull_request:
-    branches: [main, master]
+    branches: [main ]
   workflow_dispatch:
     inputs:
       build_note:
         description: 'Build note'
         default: 'manual build'
-      archive_artifact:
-        description: 'Archive fibo_soft.binpkg as release asset'
-        default: 'true'
-        type: choice
-        options: ['true', 'false']
-
+      
 permissions:
   contents: write
 
@@ -62,12 +55,7 @@ jobs:
           # Add any pip packages required by launch.py / opencpu here, e.g.:
           # pip install pyserial
 
-      # ── Step 4 : Install ARM GCC toolchain ───────────────────────────────────
-      - name: Install ARM GCC toolchain
-        run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y gcc-arm-none-eabi binutils-arm-none-eabi make cmake ninja-build
-          arm-none-eabi-gcc --version
+
 
       # ── Step 5 : Verify SDK directory ────────────────────────────────────────
       - name: Verify SDK directory
@@ -176,8 +164,6 @@ jobs:
             | SHA256    | `${{ env.BINPKG_SHA256 }}` |
             | Note      | ${{ github.event.inputs.build_note || 'N/A' }} |
 
-            > **Flashing:** Use `MulDownloader.exe` on a Windows machine with the `.binpkg` file.
-            > See the README for full flashing instructions.
           files: ${{ env.SDK_DIR }}/${{ env.ZIP_NAME }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
