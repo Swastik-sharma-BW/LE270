@@ -1,0 +1,192 @@
+name: Build LE270-CN-1D6W7-00-OPEN
+
+on:
+  push:
+    branches: [main, master, develop]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+    inputs:
+      build_note:
+        description: 'Build note'
+        default: 'manual build'
+      archive_artifact:
+        description: 'Archive fibo_soft.binpkg as release asset'
+        default: 'true'
+        type: choice
+        options: ['true', 'false']
+
+permissions:
+  contents: write
+
+env:
+  PROJECT_NAME: LE270-CN-1D6W7-00-OPEN
+  SDK_DIR: fibocom_opensrcSDK_12007_7000
+  BINPKG_REL: gccout/ec7xx_0h00_ec718um/LE270-CN-1D6W7-00-OPEN/fibo_soft/fibo_soft.binpkg
+
+jobs:
+  build:
+    name: Build LE270 Firmware
+    runs-on: ubuntu-latest        # Linux only — SDK cannot be compiled on Windows
+
+    defaults:
+      run:
+        working-directory: ${{ env.SDK_DIR }}
+
+    steps:
+
+      # ── Step 1 : Checkout ────────────────────────────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ── Step 2 : Environment Check ───────────────────────────────────────────
+      - name: Verify Linux environment
+        run: |
+          echo "=== OS ==="
+          uname -a
+          echo "=== Python ==="
+          python3 --version
+          python3 -c "import sys; assert sys.version_info >= (3,6), 'Python >= 3.6 required'"
+          echo "=== Disk space ==="
+          df -h .
+
+      # ── Step 3 : Install Python dependencies ─────────────────────────────────
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Python dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          # Add any pip packages required by launch.py / opencpu here, e.g.:
+          # pip install pyserial
+
+      # ── Step 4 : Install ARM GCC toolchain ───────────────────────────────────
+      - name: Install ARM GCC toolchain
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y gcc-arm-none-eabi binutils-arm-none-eabi make cmake ninja-build
+          arm-none-eabi-gcc --version
+
+      # ── Step 5 : Verify SDK directory ────────────────────────────────────────
+      - name: Verify SDK directory
+        run: |
+          echo "=== SDK root contents ==="
+          ls -la .
+          if [ ! -f "launch.py" ]; then
+            echo "ERROR: launch.py not found in ${SDK_DIR}"
+            exit 1
+          fi
+          echo "launch.py found — OK"
+
+      # ── Step 6 : Fix shell script permissions ────────────────────────────────
+      #   Git does not always preserve execute bits — chmod all .sh files so
+      #   GccBuild.sh (called inside launch.py) is not denied by the OS.
+      - name: Fix shell script permissions
+        run: |
+          echo "=== Setting execute permission on all .sh scripts ==="
+          find . -name "*.sh" | xargs chmod +x
+          echo "=== Verifying GccBuild.sh ==="
+          ls -la GccBuild.sh
+
+      # ── Step 7 : Clean previous build output ─────────────────────────────────
+      - name: Clean
+        run: |
+          python3 launch.py clean || true
+          rm -rf gccout
+          echo "Clean complete."
+
+      # ── Step 8 : Build firmware ───────────────────────────────────────────────
+      #   Passes project name as argv[1] to bypass the interactive prompt
+      #   (see fibo_select_build_prj in launch.py)
+      #   GccBuild.sh is called internally by launch.py → fibo_build_project()
+      #   If it fails, launch.py continues but gccout/ap won't exist, causing
+      #   shutil.copytree to crash. We check the exit code via a wrapper.
+      - name: Build
+        run: |
+          set -e
+          echo "=== Building: ${{ env.PROJECT_NAME }} ==="
+          python3 launch.py "${{ env.PROJECT_NAME }}"
+          echo "=== launch.py exited successfully ==="
+
+      # ── Step 9 : Verify output binary ────────────────────────────────────────
+      - name: Verify output binary
+        run: |
+          BINPKG="${{ env.BINPKG_REL }}"
+          if [ ! -f "$BINPKG" ]; then
+            echo "ERROR: Expected output not found: $BINPKG"
+            echo "--- Contents of gccout (if present) ---"
+            find gccout -type f 2>/dev/null | head -50 || true
+            exit 1
+          fi
+          echo "=== Build succeeded. Output binary: ==="
+          ls -lh "$BINPKG"
+          sha256sum "$BINPKG"
+
+          # Expose checksum and short hash for later steps
+          FULL_SHA=$(sha256sum "$BINPKG" | awk '{print $1}')
+          echo "BINPKG_SHA256=$FULL_SHA"          >> "$GITHUB_ENV"
+          echo "BINPKG_SHA_SHORT=${FULL_SHA:0:8}" >> "$GITHUB_ENV"
+
+          # Print build info if present
+          if [ -f "gccout/info.txt" ]; then
+            echo "--- gccout/info.txt ---"
+            cat gccout/info.txt
+          fi
+
+      # ── Step 9 : Copy artifact to workspace root ──────────────────────────────
+      - name: Stage artifact
+        if: >
+          github.event_name == 'workflow_dispatch' &&
+          github.event.inputs.archive_artifact == 'true'
+        run: |
+          EPOCH=$(date +%s%3N)
+          ZIP_NAME="LE270_build${{ github.run_number }}_${BINPKG_SHA_SHORT}_${EPOCH}.zip"
+          zip "$ZIP_NAME" "${{ env.BINPKG_REL }}"
+          echo "ZIP_NAME=$ZIP_NAME" >> "$GITHUB_ENV"
+          ls -lh "$ZIP_NAME"
+
+      # ── Step 10 : Upload build artifact (every run) ───────────────────────────
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: fibo_soft_build${{ github.run_number }}
+          path: ${{ env.SDK_DIR }}/${{ env.BINPKG_REL }}
+          if-no-files-found: error
+          retention-days: 30
+
+      # ── Step 11 : Create GitHub Release (manual trigger only) ─────────────────
+      - name: Create GitHub Release
+        if: >
+          github.event_name == 'workflow_dispatch' &&
+          github.event.inputs.archive_artifact == 'true'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: firmware-le270-${{ github.run_number }}
+          name: "LE270 Firmware Build #${{ github.run_number }}"
+          body: |
+            ## LE270 Firmware Build
+
+            | Field     | Value |
+            |-----------|-------|
+            | Project   | `${{ env.PROJECT_NAME }}` |
+            | Branch    | `${{ github.ref_name }}` |
+            | Commit    | `${{ github.sha }}` |
+            | SHA256    | `${{ env.BINPKG_SHA256 }}` |
+            | Note      | ${{ github.event.inputs.build_note || 'N/A' }} |
+
+            > **Flashing:** Use `MulDownloader.exe` on a Windows machine with the `.binpkg` file.
+            > See the README for full flashing instructions.
+          files: ${{ env.SDK_DIR }}/${{ env.ZIP_NAME }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # ── Step 12 : Print release URL ───────────────────────────────────────────
+      - name: Print release URL
+        if: >
+          github.event_name == 'workflow_dispatch' &&
+          github.event.inputs.archive_artifact == 'true'
+        run: |
+          echo "Release asset: ${{ env.ZIP_NAME }}"
+          echo "Release URL  : https://github.com/${{ github.repository }}/releases/tag/firmware-le270-${{ github.run_number }}"
